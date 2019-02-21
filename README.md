@@ -1,8 +1,8 @@
-## vision-Architectures
+## vision-tutorial
 
 <p align="center"><img width="100" src="https://media-thumbs.golden.com/OLqzmrmwAzY1P7Sl29k2T9WjJdM=/200x200/smart/golden-storage-production.s3.amazonaws.com/topic_images/e08914afa10a4179893eeb07cb5e4713.png" /><img width="100" src="https://keras.io/img/keras-logo-small-wb.png" /></p>
 
-`vision-Architectures` is a tutorial for who is studying `Computer Vision Basic Architectures` using **Pytorch** and **Keras**. Most of the models about Vision were implemented with less than **100 lines** of code(except comments or blank lines). And I used Cifar10 Dataset for Benchmark. The list of these papers is a list that Professor [Sung Kim](https://github.com/hunkim) recommended.
+`vision-tutorial` is a tutorial for who is studying `Computer Vision Basic Architectures` using **Pytorch** and **Keras**. Most of the models about Vision were implemented with less than **100 lines** of code(except comments or blank lines). And I used Cifar10 Dataset for Benchmark. The list of these papers is a list that Professor [Sung Kim](https://github.com/hunkim) recommended.
 
 - **Code not prepare yet.**
 
