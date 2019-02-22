@@ -4,10 +4,8 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import matplotlib.pyplot as plt
 import torch.optim as optim
 from torchvision import datasets, transforms
-from torch.autograd import Variable
 
 class AlexNet(nn.Module):
     def __init__(self):
@@ -44,19 +42,22 @@ class AlexNet(nn.Module):
         out = self.classifier(out) # out : [1, 10]
         return out
 
-batch_size = 1000
-transform = transforms.Compose([transforms.Resize((227, 227)), transforms.ToTensor()])
-train_data = datasets.CIFAR10(root='./data/', train=False, transform=transform, download=True) # 10000 datas
-train_loader = torch.utils.data.DataLoader(dataset=train_data, batch_size=batch_size, shuffle=True)
+transform = transforms.Compose([
+    transforms.Resize((227, 227)),
+    transforms.ToTensor()
+])
+train_data = datasets.ImageFolder(root='../data/', transform=transform)
+train_loader = torch.utils.data.DataLoader(dataset=train_data, batch_size=2, shuffle=True, num_workers=2)
 
 model = AlexNet()
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(), lr=0.001)
+optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9, weight_decay=5e-4)
 
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 print(model)
+
 for epoch in range(10):
     # Train each batch(=1000), 10 times loop(=10000/1000)
     total_loss = 0
@@ -71,7 +72,4 @@ for epoch in range(10):
         optimizer.step()
 
         total_loss += loss.item()
-        if i % 200 == 199:  # print every 2000 mini-batches
-            print('[%d, %5d] loss: %.3f' % (epoch + 1, i + 1, running_loss / 200))
-            running_loss = 0.0
-    #print('Epoch:', '%04d' % (epoch + 1), 'cost =', '{:.6f}'.format(total_loss))
+    print('Epoch:', '%04d' % (epoch + 1), 'cost =', '{:.6f}'.format(total_loss))
