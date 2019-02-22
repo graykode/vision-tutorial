@@ -8,8 +8,7 @@ from torch.autograd import Variable
 # image from https://github.com/ardamavi/Dog-Cat-Classifier/tree/master/Data/Train_Data
 # 1~5 : cat, 6~10 : dog
 
-def img_show(image, target):
-    #print('Class : ', classes[target])
+def img_show(image):
     image = image / 2 + 0.5
     plt.imshow(np.transpose(image.numpy(), (1, 2, 0)))
     plt.show(block=False)
@@ -39,6 +38,16 @@ cropped_transform = transforms.Compose([
 cropped_image = datasets.ImageFolder(root='../data/', transform=cropped_transform)
 print(cropped_image,'\n')
 pick_image(cropped_image, 5)
+
+normalized_transform = transforms.Compose([
+    transforms.ToTensor(),
+    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+])
+
+normalized_image = datasets.ImageFolder(root='../data/', transform=normalized_transform)
+print(normalized_image,'\n')
+pick_image(normalized_image, 5)
+
 
 # How to use Data Loader (Input Pipeline)
 # same batch images should have same height, weight, channel
