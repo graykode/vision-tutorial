@@ -63,7 +63,7 @@ optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 
-for epoch in range(400):
+for epoch in range(1000):
     total_loss = 0
     for i, data in enumerate(dataloader):
         inputs, labels = data
@@ -82,4 +82,5 @@ for epoch in range(400):
 for (data, target) in dataset:
     predict = model(data.unsqueeze(0).to(device))
     predict = predict.data.max(1, keepdim=False)[1].item()
-    print('predict:','cat' if predict is 0 else 'dog', ' answer:', 'cat' if target is 0 else 'dog')
+    print('predict:','cat' if predict is 0 else 'dog')
+    img_show(data)

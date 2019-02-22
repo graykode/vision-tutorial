@@ -8,17 +8,19 @@
 
   
 
-## Basic SOTA Architectures - Introduction
-
-- Introduction CNN(Convolutional Neural Networks) in Pytorch
-
-  - Paper : [Object Recognition with Gradient-Based Learning](http://yann.lecun.com/exdb/publis/pdf/lecun-99.pdf)
+## SOTA Vision Models - Introduction
 
 - How to handle image in Pytorch and Keras
 
   - Transformation with Resizing, Cropping
 
-- 1. AlexNet(2012.09)
+- Introduction CNN(Convolutional Neural Networks) in Pytorch and Keras
+
+  - What is filter(=kernel) do in Convolution?
+
+  - Paper : [Object Recognition with Gradient-Based Learning](http://yann.lecun.com/exdb/publis/pdf/lecun-99.pdf)
+
+- AlexNet(2012.09)
 
   - Paper : [ImageNet Classification with Deep Convolutional Neural Networks](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)
 
@@ -26,43 +28,43 @@
 
     ![](2.AlexNet/model.jpg)
 
-- 2.ZFNet(2013.11)
+- ZFNet(2013.11)
 
   - Paper : [Visualizing and Understanding Convolutional Networks](https://arxiv.org/abs/1311.2901)
 
-- 3.VGG16(2014.09)
+- VGG16(2014.09)
 
   - Paper : [Very Deep Convolutional Networks for Large-Scale Image Recognition](https://arxiv.org/abs/1409.1556)
 
-- 4.Inception.v1(a.k.a GoogLeNet)(2014.09)
+- Inception.v1(a.k.a GoogLeNet)(2014.09)
 
   - Paper : [Going Deeper with Convolutions](https://arxiv.org/abs/1409.4842)
 
-- 5.Inception.v2, v3(2015.12)
+- Inception.v2, v3(2015.12)
 
   - Paper : [Rethinking the Inception Architecture for Computer Vision](https://arxiv.org/abs/1512.00567)
 
-- 6.ResNet(2015.12)
+- ResNet(2015.12)
 
   - Paper : [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
 
-- 7.Inception.v4(2016.02)
+- Inception.v4(2016.02)
 
   - Paper : [Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning](https://arxiv.org/abs/1602.07261)
 
-- 8.DenseNet(2016.08)
+- DenseNet(2016.08)
 
   - Paper : [Densely Connected Convolutional Networks](https://arxiv.org/abs/1608.06993)
 
-- 9.Xception(2016.10)
+- Xception(2016.10)
 
   - Paper : [Xception: Deep Learning with Depthwise Separable Convolutions](https://arxiv.org/abs/1610.02357)
 
-- 10.MobileNet(2017.04)
+- MobileNet(2017.04)
 
   - Paper : [MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications](https://arxiv.org/abs/1704.04861)
 
-- 11.SENet(2017.09)
+- SENet(2017.09)
 
   - Paper : [Squeeze-and-Excitation Networks](https://arxiv.org/abs/1709.01507)
 
