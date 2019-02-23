@@ -15,7 +15,7 @@ def img_show(image):
     plt.imshow(np.transpose(image.numpy(), (1, 2, 0)))
     plt.show(block=False)
 
-# conv : (width(=height) - filter_size + 2*padding)/stride + 1
+# out_channel : (width(=height) - filter_size + 2*padding)/stride + 1
 class Bottleneck(nn.Module):
     def __init__(self, in_channel, growth_rate):
         super(Bottleneck, self).__init__()

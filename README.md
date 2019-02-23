@@ -55,6 +55,8 @@
 - DenseNet(2016.08)
 
   - Paper : [Densely Connected Convolutional Networks](https://arxiv.org/abs/1608.06993)
+  - Model
+    ![](9.DenseNet/model.jpg)
 
 - Xception(2016.10)
 

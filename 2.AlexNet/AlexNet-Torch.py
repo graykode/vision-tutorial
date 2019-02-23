@@ -14,6 +14,7 @@ def img_show(image):
     plt.imshow(np.transpose(image.numpy(), (1, 2, 0)))
     plt.show(block=False)
 
+# out_channel : (width(=height) - filter_size + 2*padding)/stride + 1
 class AlexNet(nn.Module):
     def __init__(self):
         super(AlexNet, self).__init__()
