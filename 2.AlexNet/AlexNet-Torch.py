@@ -51,6 +51,7 @@ class AlexNet(nn.Module):
 transform = transforms.Compose([
     transforms.Resize((227, 227)),
     transforms.ToTensor(),
+    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
 ])
 dataset = datasets.ImageFolder(root='../data/', transform=transform)
 dataloader = torch.utils.data.DataLoader(dataset=dataset, batch_size=2, shuffle=True)
@@ -79,8 +80,9 @@ for epoch in range(1000):
         print('Epoch:', '%04d' % (epoch + 1), 'cost =', '{:.6f}'.format(total_loss))
 
 # Test binary classification (cat is zero, dog is one)
-for (data, target) in dataset:
-    predict = model(data.unsqueeze(0).to(device))
-    predict = predict.data.max(1, keepdim=False)[1].item()
-    print('predict:','cat' if predict is 0 else 'dog')
-    img_show(data)
+with torch.no_grad():
+    for (data, target) in dataset:
+        predict = model(data.unsqueeze(0).to(device))
+        predict = predict.data.max(1, keepdim=False)[1].item()
+        print('predict:','cat' if predict is 0 else 'dog')
+        img_show(data)
