@@ -6,7 +6,7 @@ from torchvision import datasets, transforms
 from torch.autograd import Variable
 
 # image from https://github.com/ardamavi/Dog-Cat-Classifier/tree/master/Data/Train_Data
-# 1~5 : cat, 6~10 : dog
+# 0 : cat, 1 : dog
 
 def img_show(image):
     image = image / 2 + 0.5
@@ -15,11 +15,11 @@ def img_show(image):
 
 def pick_image(data, index):
     image, target = data[index]
-    img_show(image, target)
+    img_show(image)
 
 original_image = datasets.ImageFolder(root='../data/', transform=transforms.ToTensor())
 print(original_image,'\n')
-pick_image(original_image, 5)
+pick_image(original_image, 1)
 
 # make transformation (resizing image)
 resized_transform = transforms.Compose([
@@ -27,8 +27,8 @@ resized_transform = transforms.Compose([
     transforms.ToTensor()
 ])
 resized_image = datasets.ImageFolder(root='../data/', transform=resized_transform)
-print(resized_image,'\n')
-pick_image(resized_image, 5)
+print('resized image to 227x227x3')
+pick_image(resized_image, 1)
 
 # make transformation (crop image)
 cropped_transform = transforms.Compose([
@@ -36,17 +36,18 @@ cropped_transform = transforms.Compose([
     transforms.ToTensor()
 ])
 cropped_image = datasets.ImageFolder(root='../data/', transform=cropped_transform)
-print(cropped_image,'\n')
-pick_image(cropped_image, 5)
+print('cropped image to 10x10x3')
+pick_image(cropped_image, 1)
 
+# make transformation (normalized image)
 normalized_transform = transforms.Compose([
     transforms.ToTensor(),
     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
 ])
 
 normalized_image = datasets.ImageFolder(root='../data/', transform=normalized_transform)
-print(normalized_image,'\n')
-pick_image(normalized_image, 5)
+print('normalized image to mean and std (0.5, 0.5, 0.5)')
+pick_image(normalized_image, 1)
 
 
 # How to use Data Loader (Input Pipeline)
