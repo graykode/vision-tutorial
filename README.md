@@ -4,19 +4,21 @@
 
 `vision-tutorial` is a tutorial for who is studying `Computer Vision Basic Architectures` using **Pytorch** and **Keras**. Most of the models about Vision were implemented with less than **100 lines** of code(except comments or blank lines). The list of these papers is a list that Professor [Sung Kim](https://github.com/hunkim) recommended.
 
-- **Code not prepare yet.**
+- Data was used as overfitting to show simple model learning. [One image about Cat or Dog](https://github.com/graykode/vision-tutorial/tree/master/data)
+
+- The accuracy of the model is not important in this project because it is affected by data. I recommend that you **focus on the structure of the model, the number of parameters, the learning process and paper detailed implementation. **
 
   
 
-## SOTA Vision Models - Introduction
+## SOTA Basic Vision Models - Introduction
 
 - How to handle image in Pytorch and Keras
 
-  - Transformation with Resizing, Cropping
+  - Image Resizing, Cropping
 
 - Introduction CNN(Convolutional Neural Networks) in Pytorch and Keras
 
-  - What is filter(=kernel) do in Convolution?
+  - How does number of channels, filter size (=kernel), grid, and padding affect Convolution?
 
   - Paper : [Object Recognition with Gradient-Based Learning](http://yann.lecun.com/exdb/publis/pdf/lecun-99.pdf)
 
@@ -47,6 +49,8 @@
 - ResNet(2015.12)
 
   - Paper : [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
+  - Model
+    ![](7.ResNet/model.jpeg)
 
 - Inception.v4(2016.02)
 
