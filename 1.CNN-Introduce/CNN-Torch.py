@@ -36,3 +36,9 @@ outputs = nn.Conv2d(in_channels=3, out_channels=6, kernel_size=40)(cat.unsqueeze
 for i in range(outputs.shape[1]):
     print(i+1,'channel')
     img_show(outputs[:,i,:,:])
+
+print('in_channels=3, out_channels=6, kernel_size=3 stride=4 Convolution')
+outputs = nn.Conv2d(in_channels=3, out_channels=6, kernel_size=3, stride=4)(cat.unsqueeze(0)).data
+for i in range(outputs.shape[1]):
+    print(i+1,'channel')
+    img_show(outputs[:,i,:,:])
