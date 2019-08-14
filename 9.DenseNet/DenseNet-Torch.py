@@ -4,18 +4,9 @@
 '''
 import math
 import torch
-import numpy as np
 import torch.nn as nn
-import matplotlib.pyplot as plt
-import torch.optim as optim
-from torchvision import datasets, transforms
+from modelsummary import summary
 
-def img_show(image):
-    image = image / 2 + 0.5
-    plt.imshow(np.transpose(image.numpy(), (1, 2, 0)))
-    plt.show(block=False)
-
-# out_channel : (width(=height) - filter_size + 2*padding)/stride + 1
 class Bottleneck(nn.Module):
     def __init__(self, in_channel, growth_rate):
         super(Bottleneck, self).__init__()
@@ -114,41 +105,7 @@ def DenseNet201():
 def DenseNet161():
     return DenseNet(Bottleneck, [6,12,36,24], growth_rate=48)
 
-transform = transforms.Compose([
-    transforms.Resize((227, 227)),
-    transforms.ToTensor(),
-    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
-])
-dataset = datasets.ImageFolder(root='../data/', transform=transform)
-dataloader = torch.utils.data.DataLoader(dataset=dataset, batch_size=2, shuffle=True)
-
+# Please Select model by index
 model = [DenseNet121(), DenseNet161(), DenseNet169(), DenseNet201()][3]
-model.train()
-criterion = nn.CrossEntropyLoss()
-optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
-
-device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-model.to(device)
-
-for epoch in range(1000):
-    total_loss = 0
-    for i, data in enumerate(dataloader):
-        inputs, labels = data
-        inputs, labels = inputs.to(device), labels.to(device)
-        optimizer.zero_grad()
-        outputs = model(inputs)
-        loss = criterion(outputs, labels)
-        loss.backward()
-        optimizer.step()
-
-        total_loss += loss.item()
-    if (epoch + 1)%100 == 0:
-        print('Epoch:', '%04d' % (epoch + 1), 'cost =', '{:.6f}'.format(total_loss))
-
-# Test binary classification (cat is zero, dog is one)
-with torch.no_grad():
-    for (data, target) in dataset:
-        predict = model(data.unsqueeze(0).to(device))
-        predict = predict.data.max(1, keepdim=False)[1].item()
-        print('predict:','cat' if predict is 0 else 'dog')
-        img_show(data)
+print(model)
+summary(model, torch.zeros((1, 3, 227, 227)))
